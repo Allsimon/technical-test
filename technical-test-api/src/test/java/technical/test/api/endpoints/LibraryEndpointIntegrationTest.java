@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import technical.test.api.TestInfraConfig;
 import technical.test.api.TestSupport;
 import technical.test.api.representations.AuthorRepresentation;
 import technical.test.api.representations.BookRepresentation;
@@ -25,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient(timeout = "20000")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class LibraryEndpointIntegrationTest {
+public class LibraryEndpointIntegrationTest extends TestInfraConfig {
     @Autowired
     private WebTestClient webTestClient;
     @Autowired

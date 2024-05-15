@@ -4,33 +4,24 @@ import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.testcontainers.containers.MongoDBContainer;
-import org.testcontainers.utility.DockerImageName;
 import reactor.test.StepVerifier;
+import technical.test.api.TestInfraConfig;
 import technical.test.api.TestSupport;
 import technical.test.api.storage.repositories.BookRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class LibraryServiceImplTest {
+class LibraryServiceImplTest extends TestInfraConfig {
     @Resource
     private LibraryServiceImpl libraryServiceImpl;
     @Resource
     private  BookRepository bookRepository;
     @Resource
     TestSupport testSupport;
-
-    final static MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:5"));
-
-    @BeforeAll
-    static void prepare() {
-        mongoDBContainer.start();
-    }
 
     @AfterEach
     void clear() {
